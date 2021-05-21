@@ -1,0 +1,156 @@
+.backgroundCover{
+    position: fixed;
+    left:0;
+    top:0;
+    width:100vw;
+    height:100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(77, 77,66, 0.8);
+    /* backdrop-filter: blur(5px); */
+
+    z-index: 10;
+}
+
+.container{
+    position:relative;
+
+    width:40%;
+    min-width: 450px;
+    height:30%;
+    min-height: 220px;
+    padding:1rem;
+
+    background-color: rgb(255, 255, 255);
+
+    border-radius: 10px;
+    box-shadow: 10px px 40px 5px #000;
+
+    transition: width 0.3s, height 0.3s;
+}
+.container h2{
+    margin:0.2em auto;
+}
+.container input{
+    
+    width:100%;
+    height:2rem;
+    border-radius: 5px;
+    border:1px solid #343434;
+
+}
+.container button{
+    
+    outline:0;
+    border:0;
+    
+
+    border-radius: 5px;
+    background-color: transparent;
+    transition: 0.1s;
+    cursor:pointer;
+}
+.container>button:hover{
+    background-color: #F9F5FE;
+}
+
+.submit{
+        
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    
+
+    outline:0;
+    border:0;
+    
+    width:60px;
+    height:40px;
+    font-weight: 700;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: 0.1s;
+    cursor:pointer;
+
+}
+
+.emailModal .container{
+    
+    width:40%;
+    min-width: 450px;
+    height:30%;
+    min-height: 220px;
+}
+.templatesModal .container{
+    width:80%;
+    min-width: 450px;
+    height:80%;
+    min-height: 220px;
+}
+.templateContents{
+    display: grid;
+    margin:auto;
+    grid-template-columns: repeat(3, 1fr);
+}
+.templateContents>button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    padding: 1em;
+
+    border-radius: 10px;
+}
+.templateContents>button:hover{
+    background-color: transparent;
+}
+
+
+.templateContents>button h4{
+    margin:0.5em;
+    font-size: 1.3rem;
+}
+.overlayButton{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    border-radius: 10px;
+
+    transition: 0.2s;
+    opacity: 0;
+    visibility: hidden;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.overlayButton.hover{
+    visibility:visible;
+    background-color: rgba(12, 12,22, 0.9);
+    opacity: 1;
+
+}
+.overlayButton button{
+    width:8em;
+    padding:0.5em;
+    margin:1em;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color:white;
+
+    border:1px solid #fff;
+    border-radius: 1em;
+
+    transition: background-color 0.2s, color 0.2s;
+}
+.overlayButton button:hover{
+    background-color: #fff;
+    color:rgb(12, 12, 22);
+}

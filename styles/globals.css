@@ -2,8 +2,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+body{
+  overflow-x: hidden;
 }
 
 a {
@@ -13,4 +15,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1, h2, h3, h4, span, button, a{
+  font-family: 'Noto Sans KR', sans-serif;
 }
