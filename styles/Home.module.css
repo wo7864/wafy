@@ -39,11 +39,11 @@
 
   color:#fff;
 
-  border:solid 1px rgba(255, 255, 255, 0.5);
-  border-right:solid 1px rgba(255, 255, 255, 0.2);
-  border-bottom:solid 1px rgba(255, 255, 255, 0.2);
+  border:solid 1px rgba(99, 99, 99, 0.5);
+  border-right:solid 1px rgba(99, 99, 99, 0.2);
+  border-bottom:solid 1px rgba(99, 99, 99, 0.2);
   border-radius: 1em;
-  background-color: #ffffff33;
+  background-color: #212121bb;
 
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
   transform: translateY(5%);

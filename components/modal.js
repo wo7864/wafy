@@ -3,13 +3,8 @@ import {
     useRef,
     useState,
 } from 'react'
+import finAnima, { FinAnima } from 'finished-animation'
 import styles from './modal.module.css'
-
-function easeOutExpo(x) {
-    return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
-}
-
-
 
 
 export default function Modal({
@@ -25,57 +20,32 @@ export default function Modal({
     const [className, setClassName] = useState(firstClassName)
     const [childIndex, setChildIndex] = useState(0)
     const Contents = Children[childIndex]
-    const openModal = () => {
-        let opacity = 0;
-        let transY = 50;
-        let start
-        const step = (timestamp) => {
-            if (!start) start = timestamp
-            const progress = (timestamp - start) / 600
-            const easeProgress = easeOutExpo(progress)
 
-            if (progress < 1) {
-                opacity = easeProgress * 2
-                transY = 200 - easeProgress * 200
-                backgroundCoverRef.current.style.opacity = opacity
-                containerRef.current.style.transform = `translateY(${(transY)}%)`
-                requestAnimationFrame(step)
-            } else {
-                backgroundCoverRef.current.style.opacity = 1
-                containerRef.current.style.transform = `translateY(0%)`
-            }
-        }
-        requestAnimationFrame(step)
-    }
+    const openAnimation = new FinAnima({
+        func:(progress)=>{
+            backgroundCoverRef.current.style.opacity = progress * 2
+            containerRef.current.style.transform = `translateY(${ 200 - (progress * 200)}%)`
+        },
+        duration:0.7,
+        easingFunction:'easeOutExpo'
+    })
+    const closeAnimation = new FinAnima({
+        func:(progress) => {
+            backgroundCoverRef.current.style.opacity = 1 - progress
+            containerRef.current.style.transform = `translateY(${(progress * 50)}%)`
+        },
+        after:()=>{toggle(false)},
+        duration:0.7,
+        easingFunction:'easeOutExpo'
+    })
 
     const closeModal = () => {
         if (isClosing) return;
         close(true)
-
-        let opacity = 1;
-        let transY = 0;
-        let start
-        const step = (timestamp) => {
-            if (!start) start = timestamp
-            const progress = (timestamp - start) / 600
-            const easeProgress = easeOutExpo(progress)
-
-            if (progress < 1) {
-                opacity = 1 - (easeProgress)
-                transY = easeProgress * 50
-                backgroundCoverRef.current.style.opacity = opacity
-                containerRef.current.style.transform = `translateY(${(transY)}%)`
-                requestAnimationFrame(step)
-            } else {
-                backgroundCoverRef.current.style.opacity = 0
-                containerRef.current.style.transform = `translateY(200%)`
-                toggle(false)
-            }
-        }
-        requestAnimationFrame(step)
+        closeAnimation.play();
     }
 
-    useEffect(() => { openModal() }, [])
+    useEffect(() => { openAnimation.play(); }, [])
     return (
         <div
             className={[styles.backgroundCover, className].join(' ')}
@@ -90,7 +60,7 @@ export default function Modal({
                 <Contents
                     setClassName={setClassName}
                     setChildIndex={setChildIndex}
-                    closeModal={closeModal}/>
+                    closeModal={closeModal} />
             </div>
         </div>
     )

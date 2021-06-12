@@ -1,0 +1,27 @@
+.container {
+    color: #fff;
+    border: solid 1px rgba(99, 99, 99, 0.5);
+    border-right: solid 1px rgba(99, 99, 99, 0.2);
+    border-bottom: solid 1px rgba(99, 99, 99, 0.2);
+    border-radius: 1em;
+    background-color: #3a3a4533;
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.8);
+}
+
+.button {
+
+    color: #fff;
+    border: solid 1px #3a3a45;
+    border-right: solid 1px #3a3a4588;
+    border-bottom: solid 1px #3a3a4588;
+    border-radius: 1em;
+    background-color: #3a3a4533;
+    box-shadow: 4px 4px 10px 3px rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #ffffffcc;
+    color: #000;
+}

@@ -9,6 +9,8 @@
     "export": "next export"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "finished-animation": "0.0.22",
     "firebase": "^8.6.2",
     "next": "10.2.0",
     "react": "17.0.2",

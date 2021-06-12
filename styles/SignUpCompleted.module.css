@@ -1,0 +1,32 @@
+.container{
+    width:100vw;
+    height:100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.completedContainer{
+    width:60vw;
+    padding:2rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.5rem;
+}
+
+.completedContainer p{
+    margin:0.5em;
+}
+
+.button{
+    margin:1em;
+    padding:1em;
+
+    font-size: 1.1rem;
+    font-weight: 700;
+}
