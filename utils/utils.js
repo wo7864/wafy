@@ -8,3 +8,8 @@ export function getDateString(date, gubun)
     sDate  = sDate > 9 ? sDate : "0" + sDate;
     return sYear + gubun + sMonth + gubun + sDate;
 }
+
+export function stringDateFormat(string){
+    const date = string.slice(0, 10).split('-');
+    return `${date[0]}년 ${date[1]}월 ${date[2]}일`
+}

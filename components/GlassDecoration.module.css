@@ -1,0 +1,34 @@
+  .decoration{
+    position:absolute;
+    animation: cloud 8s ease-in-out infinite;
+  }
+  
+  .decoration:nth-child(1){
+    width:100px;
+    height:100px;
+    top:30%;
+    left:calc(0% - 50px);
+    z-index: 3;
+    animation-duration: 6s;
+  }
+  
+  .decoration:nth-child(2){
+    width:200px;
+    height:200px;
+    bottom:10%;
+    right:calc(0% - 100px);
+    z-index: 0;
+  }
+  
+  @keyframes cloud{
+    from {
+      transform: translateY(0%);
+    }
+    50%{
+      transform: translateY(-40%);
+    }
+    100%{
+      transform: translateY(0%);
+  
+    }
+  }

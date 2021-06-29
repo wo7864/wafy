@@ -1,10 +1,11 @@
-import Image from 'next/image'
 import { useState } from 'react'
 import Layout from '../components/layout'
 import Modal from '../components/modal'
+import GlassDecoration from '../components/GlassDecoration'
+
 import styles from '../styles/Home.module.css'
 import modalStyles from '../components/modal.module.css'
-
+import TemplatesComponent from '../components/TemplateComponent'
 const EmailModal = ({
   setClassName,
   setChildIndex
@@ -25,66 +26,6 @@ const EmailModal = ({
   )
 }
 
-const TemplateButton = ({ title, src, alt }) => {
-  const [isHover, hover] = useState(false)
-
-
-  return (
-    <button
-      onMouseEnter={() => hover(true)}
-      onMouseLeave={() => hover(false)}>
-      <Image
-        src={src}
-        alt={alt}
-        width={400}
-        height={250} />
-      <h4>{title}</h4>
-      <div className={[
-        modalStyles.overlayButton,
-        isHover ? modalStyles.hover : ''
-      ].join(' ')}>
-        <button>미리보기</button>
-        <button>선택</button>
-      </div>
-    </button>
-  )
-}
-
-const TemplatesModal = ({
-  closeModal,
-}) => {
-  return (
-    <>
-      <h2>템플릿 선택하기</h2>
-      <p>원하는 템플릿을 선택해주세요.</p>
-      <div className={modalStyles.templateContents}>
-        <TemplateButton
-          title="애플 웹사이트"
-          src="/assets/images/template1.jpg"
-          alt="apple template image" />
-        <TemplateButton
-          title="Future of FrontEnd"
-          src="/assets/images/template2.jpg"
-          alt="apple template image" />
-
-        <TemplateButton
-          title="Ombia Studio"
-          src="/assets/images/template3.jpg"
-          alt="apple template image" />
-
-
-
-
-      </div>
-      <button
-        className={modalStyles.submit}
-        onClick={() => {
-          closeModal()
-        }}>닫기</button>
-    </>
-  )
-}
-
 
 
 // Home Component
@@ -94,8 +35,7 @@ export default function Home() {
   const [isShowStartModal, toggleStartModal] = useState(false)
 
   return (
-    <Layout>
-
+    <>
       <section className={styles.container}>
         <video
           className={styles.backgroundVideo}
@@ -103,8 +43,8 @@ export default function Home() {
           muted
           autoPlay />
         <div className={styles.section1Contents}>
+          <GlassDecoration/>
           <h1>오직 나만의 브랜딩 웹사이트를 <br />직접 만들어보세요!</h1>
-
           <button
             onClick={() => { toggleStartModal(true) }}>
             지금 만들어 보기
@@ -113,14 +53,12 @@ export default function Home() {
 
       </section>
       <Modal
-        className={modalStyles.emailModal}
+        firstClassName={modalStyles.emailModal}
         isShow={isShowStartModal}
         toggle={toggleStartModal}
-        Children={[EmailModal, TemplatesModal]}
+        Children={[EmailModal, TemplatesComponent]}
       />
-
-
-    </Layout>
+      </>
   )
 }
 

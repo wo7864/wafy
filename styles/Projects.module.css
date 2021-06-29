@@ -1,61 +1,105 @@
 .container {
-    width:100vw;
+    width: 100vw;
     height: 100vh;
+    padding: 15rem 5rem;
+}
 
-    padding:15rem 5rem;
-
-
-    display:flex;
+.flexContainer {
+    display: flex;
     justify-content: space-around;
-    
 }
 
-.itemContainer{
+.itemContainer {
     position: relative;
-    width:20vw;
-    height:50vh;
-
-    padding:1rem;
-
-    color:#fff;
-  border:solid 1px rgba(99, 99, 99, 0.5);
-  border-right:solid 1px rgba(99, 99, 99, 0.2);
-  border-bottom:solid 1px rgba(99, 99, 99, 0.2);
-  border-radius: 1em;
-  background-color: #2a2a30bb;
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    width: 20vw;
+    height: 50vh;
+    padding: 1rem;
+    color: #fff;
+    border: solid 1px rgba(99, 99, 99, 0.5);
+    border-right: solid 1px rgba(99, 99, 99, 0.2);
+    border-bottom: solid 1px rgba(99, 99, 99, 0.2);
+    border-radius: 1em;
+    background-color: #2a2a30bb;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
 }
 
-.imageContainer{
+.imageContainer {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width:100%;
-    height:55%;
-  border-radius: 0.5rem;
-  background-color: #3a3a45;
-}
-.buttonContainer{
-    position:relative;
-    width:100%;
-    display: flex;
-    justify-content: space-between;
-}
-.buttonContainer a{
-    width:45%;
-    padding:0.5rem;
-    text-align: center;
-
-    border-radius: 0.3rem;
+    width: 100%;
+    height: 55%;
+    border-radius: 0.5rem;
     background-color: #3a3a45;
 }
 
-.updateDate{
+.buttonContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonContainer button, .buttonContainer a {
+    width: 45%;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: 400;
+    border-radius: 0.3rem;
+    background-color: #3a3a45;
+    transition: .3s ease-in-out;
+
+    color:#fff;
+    font-size: 1rem;
+    outline:0;
+    border: 0;
+    cursor:pointer;
+}
+
+.buttonContainer button:hover,
+.buttonContainer a:hover {
+    background-color: #fff;
+    color: #3a3a45;
+    font-weight: 700;
+}
+
+.updateDate {
     position: absolute;
-    bottom:1rem;
-    right:1rem;
-
-    margin:0;
-
+    bottom: 1rem;
+    right: 1rem;
+    margin: 0;
     font-size: 0.6rem;
+}
+
+.NoProjectContainer {
+    width: 100vw;
+    height: 100vh;
+    padding: 10vw 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.NoProjectContainer h2 {
+    margin: 0.5em;
+}
+
+.NoProjectContainer h3 {
+    margin: 0.5em;
+    margin-bottom: 2.5em;
+}
+
+.NoProjectContainer .newProject {
+    width: 40vw;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    font-weight: 700;
+    border-radius: 0.5em;
 }

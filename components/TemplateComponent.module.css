@@ -1,0 +1,125 @@
+.container button{
+    
+    outline:0;
+    border:0;
+    
+
+    border-radius: 5px;
+    background-color: transparent;
+    transition: 0.1s;
+    cursor:pointer;
+}
+.container>button:hover{
+    background-color: #F9F5FE;
+}
+
+
+.templateContents{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    margin:auto;
+}
+
+.templateContainer{
+    width:40%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    padding: 1em;
+
+    border-radius: 10px;
+    transition:0.3s ease-in-out;
+}
+.templateContents>button:hover{
+    background-color: transparent;
+}
+
+
+.templateContents>button h4{
+    margin:0.5em;
+    font-size: 1.3rem;
+}
+.overlayButton{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    border-radius: 10px;
+
+    transition: 0.2s;
+    opacity: 0;
+    visibility: hidden;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.overlayButton.hover{
+    visibility:visible;
+    background-color: rgba(12, 12,22, 0.9);
+    opacity: 1;
+
+}
+.overlayButton button{
+    width:8em;
+    padding:0.5em;
+    margin:1em;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color:white;
+
+    border:1px solid #fff;
+    border-radius: 1em;
+
+    transition: background-color 0.2s, color 0.2s;
+}
+.overlayButton button:hover{
+    background-color: #fff;
+    color:rgb(12, 12, 22);
+}
+
+
+.selected{
+    width:50%;
+
+}
+.nonSelected{
+    width:25%;
+
+}
+.templateContents h4{
+    margin-bottom:0.5rem;
+}
+.templateContents p{
+    margin:0.5rem;
+}
+
+.finalButtonContainer{
+    width:10rem;
+    display: flex;
+    justify-content: space-around;
+}
+.finalButtonContainer button{
+    border-radius: 0.5rem;
+    padding:0.5rem;
+
+    font-weight: 700;
+    font-size: 1rem;
+
+    letter-spacing: 0.2rem;
+    transition: background-color 0.3s;
+}
+.finalButtonContainer button:hover{
+    background-color: #F9F5FE;
+}
+.cancle{
+    color:#FF0266;
+}
+.start{
+    color:#2EA456;
+}

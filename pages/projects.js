@@ -1,40 +1,41 @@
+import { useState } from 'react'
+
 import Image from 'next/image'
+
+import { UserContext } from '../store/user'
+
+
 import Layout from '../components/layout'
+import Modal from '../components/modal'
+import TemplatesComponent from '../components/TemplateComponent'
+
 import styles from '../styles/Projects.module.css';
 import gmStyles from '../styles/glassmorphism.module.css';
-import { getDateString } from '../utils/utils';
+import modalStyles from '../components/modal.module.css'
 
-
+import {
+    SERVER_URL,
+    EDITOR_URL,
+} from '../utils/constant';
+import { stringDateFormat } from '../utils/utils'
 // Projects Component
 // description: index.js Page Main Component
-const datas = [{
-    _id: '1234567',
-    data: {},
-    title: "새로운 웹사이트",
-    thumbnail: "",
-    assets: {},
-    create_date: getDateString(new Date(), '/'),
-    update_date: getDateString(new Date(), '/')
-},
-{
-    _id: '1234567',
-    data: {},
-    title: "새로운 웹사이트",
-    thumbnail: "",
-    assets: {},
-    create_date: getDateString(new Date(), '/'),
-    update_date: getDateString(new Date(), '/')
-},
 
-]
+const thumbnailURL = `${SERVER_URL}/projects/thumbnail`
 
 const Item = ({ data }) => {
-    const { title, thumbnail, update_date } = data;
+    const { id, title, thumbnail, updatedAt } = data;
+
+    const start = () => {
+        window.open(`${EDITOR_URL}/${id}`)
+    }
+
     return (
         <div className={styles.itemContainer}>
             <div className={styles.imageContainer}>
                 {thumbnail ?
-                    <Image src={thumbnail} />
+                    <Image src={`${thumbnailURL}/${thumbnail}`}
+                        layout="fill" />
                     :
                     <span>No Image</span>
                 }
@@ -42,23 +43,61 @@ const Item = ({ data }) => {
 
             <h2>{title}</h2>
             <div className={styles.buttonContainer}>
-                <a className={gmStyles.button} href="#">편집하기</a>
-                <a className={gmStyles.button} href="#">환경설정</a>
+                <button onClick={start}>
+                    편집하기
+                </button>
+                <a href="#">환경설정</a>
             </div>
 
-            <p className={styles.updateDate}>최종 수정일: <span>{update_date}</span></p>
+            <p className={styles.updateDate}>최종 수정일: <span>{stringDateFormat(updatedAt)}</span></p>
         </div>
     )
 }
 
 export default function Projects() {
 
-    return (
-        <Layout>
-            <div className={styles.container}>
-                {datas.map(data => <Item key={data._id} data={data} />)}
+    const [isShowModal, toggleModal] = useState(false)
+
+
+    const CreateProject = () => {
+        return (
+            <div className={styles.NoProjectContainer}>
+                <h2>이런! 아직 프로젝트가 생성되지 않았네요.</h2>
+                <h3>아래의 버튼을 눌러 새로운 프로젝트를 시작해봐요!</h3>
+                <button className={
+                    [gmStyles.button, styles.newProject].join(' ')}
+                    onClick={() => { toggleModal(true) }}>
+                    +
+                </button>
             </div>
-        </Layout>
+        )
+    }
+
+    return (
+        <>
+            <UserContext.Consumer>
+                {({ projects }) => {
+                    return (
+                        projects.length ?
+                            <div className={styles.container}>
+                                <div className={styles.flexContainer}>
+                                    {projects.map(data => <Item key={data.id} data={data} />)}
+                                </div>
+                            </div>
+                            :
+                            <CreateProject />
+                    )
+                }}
+
+            </UserContext.Consumer>
+
+            <Modal
+                firstClassName={modalStyles.templatesModal}
+                isShow={isShowModal}
+                toggle={toggleModal}
+                Children={[TemplatesComponent]}
+            />
+        </>
     )
 }
 
